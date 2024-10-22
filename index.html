@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Weather Dashboard</title>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.0.0/dist/tailwind.min.css" rel="stylesheet">
+
+
+</head>
+<body class="bg-white font-sans">
+
+  <aside class="w-64 h-screen bg-gradient-to-br from-purple-800 to-purple-900 text-white p-6 fixed">
+    <div class="flex items-center mb-12">
+      <img src="https://w7.pngwing.com/pngs/958/648/png-transparent-the-weather-channel-inc-yahoo-computer-icons-weather-purple-violet-magenta.png" alt="App Logo" class="h-12 w-12 rounded-full shadow-lg">
+      <span class="ml-4 text-2xl font-bold">WeatherApp</span>
+    </div>
+    <nav class="space-y-6">
+      <a href="#" class="block text-lg hover:bg-purple-700 p-3 rounded-lg transition-colors duration-300">Dashboard</a>
+     <p>Stay Ahead With Weather Updates. Be Weather-Wise, Stay Well-Prepared.</p>
+    </nav>
+  </aside>
+
+  <main class="ml-64 p-10 space-y-12 bg-red-900">
+
+    <section class="bg-purple-100 p-8 rounded-lg shadow-lg">
+      <h1 class="text-4xl font-semibold text-gray-800 mb-6">Enter Country Name</h1>
+      <div class="flex items-center space-x-4">
+        <input id="cityInput" type="text" placeholder="Enter city name" class="p-3 border border-gray-300 rounded-lg w-72 focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <button id="getWeatherBtn" class="bg-blue-500 text-white px-6 py-3 rounded-lg hover:bg-blue-700 transition-colors duration-300">Get Weather</button>
+      </div>
+    </section>
+
+    <section id="weatherWidget" class="bg-purple-100 p-8 rounded-lg shadow-lg space-y-4">
+      <h2 class="text-2xl font-bold text-gray-800" id="cityName">City Name</h2>
+      <p class="text-lg text-gray-600" id="weatherDescription">Weather: Clear sky</p>
+      <div class="grid grid-cols-2 gap-6">
+        <p class="text-lg text-gray-600" id="temperature">Temperature: 25°C</p>
+        <p class="text-lg text-gray-600" id="humidity">Humidity: 60%</p>
+        <p class="text-lg text-gray-600" id="windSpeed">Wind Speed: 5 m/s</p>
+        <img id="weatherIcon" src="" alt="Weather Icon" class="w-16 h-16">
+      </div>
+    </section>
+
+    <section class="bg-purple-100 p-8 rounded-lg shadow-lg">
+      <h3 class="text-2xl font-bold text-gray-800 mb-6">5-Day Weather Forecast</h3>
+      <div id="forecast" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-6"></div>
+      <table class="min-w-full divide-y divide-gray-200 mt-6">
+        <thead class="bg-gray-200">
+          <tr>
+            <th class="px-4 py-2">Date</th>
+            <th class="px-4 py-2">Temperature (°C)</th>
+            <th class="px-4 py-2">Weather</th>
+          </tr>
+        </thead>
+        <tbody id="forecastTable" class="bg-white divide-y divide-gray-200"></tbody>
+      </table>
+      <div id="pagination" class="mt-4"></div>
+    </section>
+
+    <section class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <canvas id="tempChart"></canvas>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <canvas id="weatherConditionsChart"></canvas>
+      </div>
+      <div class="bg-white p-6 rounded-lg shadow-lg">
+        <canvas id="tempLineChart"></canvas>
+      </div>
+    </section>
+
+    <section id="chatSection" class="bg-purple-100 p-8 rounded-lg shadow-lg mt-12">
+      <h3 class="text-2xl font-bold text-gray-800 mb-6">Chat with Gemini</h3>
+      <div id="chatWindow" class="bg-gray-100 p-4 h-64 overflow-y-auto rounded-lg"></div>
+      <div class="mt-4 flex">
+        <input id="chatInput" type="text" placeholder="Type your message..." class="p-3 border border-gray-300 rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-400">
+        <button id="sendBtn" class="bg-blue-500 text-white px-6 py-3 ml-4 rounded-lg hover:bg-blue-700 transition-colors duration-300">Send</button>
+      </div>
+    </section>
+    
+    
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
